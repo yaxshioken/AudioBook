@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "drf_yasg",
     "phonenumber_field",
+    'drf_spectacular',
 ]
 
 CUSTOM_APPS = [
@@ -137,7 +138,7 @@ MEDIA_ROOT = "media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
-SWAGGER_SETTINGS = {"DEFAULT_AUTO_SCHEMA_CLASS": "config.swaggers.CustomAutoSchema"}
+# SWAGGER_SETTINGS = {"DEFAULT_AUTO_SCHEMA_CLASS": "config.swaggers.CustomAutoSchema"}
 
 STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -150,14 +151,21 @@ EMAIL_USE_SSL = False
 
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-}
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+                  "DEFAULT_AUTHENTICATION_CLASSES": (
+                      "rest_framework_simplejwt.authentication.JWTAuthentication",
+                  ),
+                  "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+                  }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=4),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=4),
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'AudioBook Project API',
+    'DESCRIPTION': 'Xush kelibsiz',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+
 }

@@ -32,7 +32,7 @@ class Book(Model):
     book_audio = FileField(upload_to="audios/")
     category = ForeignKey("books.Category", SET_NULL, null=True, blank=True)
     created_at = DateTimeField(auto_now_add=True)
-    review = IntegerField()
+    review = IntegerField(default=0     )
     book_file = FileField(upload_to="books/")
 
     def save(self, *args, **kwargs):

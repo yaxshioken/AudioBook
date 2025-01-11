@@ -11,17 +11,17 @@ from books.serializers.category import CategorySerializer, ChoiceCategorySeriali
 class CategoryCreateAPIView(CreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-
+    my_tags=['categories']
 
 class CategoryListAPIView(ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-
+    my_tags=['categories']
 
 class ChoiceCategoryAPIView(APIView):
     permission_classes = [AllowAny, ]
     serializer_class = ChoiceCategorySerializer
-
+    my_tags = ['categories']
     @swagger_auto_schema(request_body=ChoiceCategorySerializer)
     def post(self, request):
         serializer = ChoiceCategorySerializer(data=request.data)
