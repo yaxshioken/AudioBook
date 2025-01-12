@@ -30,9 +30,9 @@ class Book(Model):
     author = CharField(max_length=255)
     slug = SlugField(unique=True, blank=True, null=True)
     book_audio = FileField(upload_to="audios/")
-    category = ForeignKey("books.Category", SET_NULL, null=True, blank=True)
+    category = ForeignKey("books.Category", CASCADE)
     created_at = DateTimeField(auto_now_add=True)
-    review = IntegerField(default=0     )
+    review = IntegerField(default=0)
     book_file = FileField(upload_to="books/")
 
     def save(self, *args, **kwargs):

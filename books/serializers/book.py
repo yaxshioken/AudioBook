@@ -5,6 +5,6 @@ from books.models import Book
 
 class BookSerializer(ModelSerializer):
     class Meta:
-        model=Book
-        fields='__all__'
-        read_only_fields=('slug','created_at','review')
+        model = Book
+        fields = "__all__"
+        read_only_fields = ("slug", "created_at", "review")
